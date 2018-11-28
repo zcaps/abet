@@ -1,0 +1,460 @@
+body {
+  min-width: none;
+  min-height: nonepx;
+  background-color: rgb(255, 255, 255);
+  font: 400 1em/1.38 Helvetica;
+  color: rgb(2, 1, 1);
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  transform: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  transition: none;
+  -webkit-filter: none;
+  -moz-filter: none;
+  -o-filter: none;
+  -ms-filter: none;
+  filter: none;
+}
+
+.abetlogo {
+  display: block;
+  float: left;
+  width: 25.6111111111%;
+  height: auto;
+  margin: 8px 0 0 37.16667%;
+  overflow: hidden;
+}
+
+.assessment1 {
+  float: left;
+  clear: both;
+  width: 82.9861111111%;
+  height: 324px;
+  margin-left: 8.47114%;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.assessment2,
+.assessment3 {
+  float: left;
+  clear: both;
+  width: 82.9861111111%;
+  height: 324px;
+  margin-left: 8.49935%;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.assessments-container {
+  float: left;
+  clear: both;
+  width: 80%;
+  height: 1035px;
+  margin: 90px 0 0 10%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.assessments-container-title {
+  float: left;
+  width: 100%;
+  min-height: 55px;
+  margin-top: 1px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 2.813em;
+  text-align: center;
+  color: rgb(105, 104, 102);
+}
+
+.course1 {
+  display: block;
+  float: left;
+  clear: both;
+  width: 99.9676405325%;
+  height: 52px;
+  margin-top: 5px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  background-color: rgb(247, 247, 247);
+  font-size: 1em;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.course2,
+.course3,
+.course4,
+.course5 {
+  display: block;
+  float: left;
+  clear: both;
+  width: 99.9676405325%;
+  height: 52px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  background-color: rgb(255, 255, 255);
+  font-size: 1em;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.courses-container {
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 37;
+  width: 18.7777777777%;
+  height: 489px;
+  margin: 49px 0 0 10%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.courses-container-title {
+  float: left;
+  width: 99.9678491051%;
+  height: 73px;
+  min-height: 73px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 2.813em;
+  text-align: center;
+  color: rgb(105, 104, 102);
+}
+
+.outcome-container-title {
+  float: left;
+  width: 100.0026801029%;
+  min-height: 73px;
+  margin-left: -0.00164%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 2.813em;
+  text-align: center;
+  color: rgb(105, 104, 102);
+}
+
+.outcome1-container {
+  float: left;
+  clear: both;
+  width: 100%;
+  height: 61px;
+  margin-top: 5px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  background-color: rgb(247, 247, 247);
+}
+
+.outcome1-container .text {
+  width: 80.314468512%;
+  min-height: 53px;
+  margin: 4px 0 0 9.78783%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.outcome2-container,
+.outcome3-container,
+.outcome4-container,
+.outcome5-container,
+.outcome6-container {
+  float: left;
+  clear: both;
+  width: 100.0016447368%;
+  height: 61px;
+  margin-left: -0.00164%;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.outcome2-container .text,
+.outcome3-container .text,
+.outcome4-container .text,
+.outcome5-container .text,
+.outcome6-container .text {
+  width: 80.314468512%;
+  min-height: 53px;
+  margin: 4px 0 0 9.79096%;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+}
+
+.outcomes-container {
+  position: relative;
+  float: left;
+  z-index: 30;
+  width: 52.7777777777%;
+  height: 489px;
+  margin: 49px 0 0 8.44358%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.text {
+  float: left;
+}
+
+._container {
+  float: left;
+  width: 100%;
+  height: 149px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.text-11,
+.text-15,
+.text-7 {
+  width: 99.9331103678%;
+  min-height: 38px;
+  margin-top: 5px;
+  font-size: 1.563em;
+  color: rgb(105, 104, 102);
+}
+
+.text-12,
+.text-16,
+.text-8 {
+  clear: both;
+  width: 84.338231449%;
+  min-height: 36px;
+  margin: 13px 0 0 7.8295%;
+  font-size: 1em;
+  color: rgb(2, 1, 1);
+}
+
+.text-13,
+.text-17,
+.text-9 {
+  clear: both;
+  width: 84.338231449%;
+  min-height: 36px;
+  margin: 26px 0 0 7.8295%;
+  font-size: 1em;
+  color: rgb(2, 1, 1);
+}
+
+.text-10,
+.text-14,
+.text-18 {
+  clear: both;
+  width: 84.338231449%;
+  min-height: 36px;
+  margin: 26px 0 0 7.83081%;
+  font-size: 1em;
+  color: rgb(2, 1, 1);
+}
+
+@media(max-width: 1200px) {
+  .assessments-container {
+    width: 100%;
+    height: 1125px;
+    margin-top: 87px;
+    margin-left: 0;
+  }
+
+  .assessments-container .assessment1,
+  .assessments-container .assessment2,
+  .assessments-container .assessment3 {
+    width: 80%;
+    height: 354px;
+    margin-left: 10%;
+  }
+
+  .courses-container {
+    position: relative;
+    z-index: 37;
+    width: 23.5833333333%;
+    margin-left: 0;
+  }
+
+  .courses-container .courses-container-title {
+    width: 100.0040189695%;
+    font-size: 2.5em;
+  }
+
+  .outcome1-container .text {
+    width: 82.0843091334%;
+    margin-left: 9.48478%;
+  }
+
+  .outcome2-container .text {
+    width: 81.7330210772%;
+    margin-left: 9.48478%;
+  }
+
+  .outcome3-container .text {
+    width: 82.6697892271%;
+    margin-left: 9.48478%;
+  }
+
+  .outcome4-container .text {
+    width: 79.5081967213%;
+    margin-left: 9.59456%;
+  }
+
+  .outcome5-container .text {
+    width: 80.7962529274%;
+    margin-left: 9.59456%;
+  }
+
+  .outcome6-container .text {
+    width: 81.2646370023%;
+    margin-left: 9.59456%;
+  }
+
+  .outcomes-container {
+    position: relative;
+    z-index: 30;
+    width: 71.1666666666%;
+    height: 582px;
+    margin-left: 5.25%;
+  }
+
+  .outcomes-container .outcome-container-title {
+    width: 100%;
+    margin-left: 0;
+    font-size: 2.5em;
+  }
+
+  .outcomes-container .outcome1-container {
+    height: 81px;
+  }
+
+  .outcomes-container .outcome2-container,
+  .outcomes-container .outcome3-container,
+  .outcomes-container .outcome4-container,
+  .outcomes-container .outcome5-container,
+  .outcomes-container .outcome6-container {
+    width: 100%;
+    height: 81px;
+    margin-left: 0;
+  }
+
+  .assessment1 .text-10,
+  .assessment1 .text-8,
+  .assessment1 .text-9,
+  .assessment2 .text-12,
+  .assessment2 .text-13 {
+    width: 85%;
+    margin-left: 8.54167%;
+  }
+
+  .assessment2 .text-14 {
+    width: 84.8958333333%;
+    margin-left: 8.54167%;
+  }
+
+  .assessment3 .text-16,
+  .assessment3 .text-17,
+  .assessment3 .text-18 {
+    width: 82.9166666666%;
+    margin-left: 8.54167%;
+  }
+
+  ._container .abetlogo-1 {
+    width: 39.1666666666%;
+    height: auto;
+    margin-top: 9px;
+    margin-left: 30.39974%;
+  }
+}
+
+@media(max-width: 650px) {
+  body {
+    font-size: 1em;
+  }
+
+  .assessments-container {
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .assessments-container .assessment1,
+  .assessments-container .assessment2,
+  .assessments-container .assessment3,
+  .outcomes-container .outcome1-container,
+  .outcomes-container .outcome2-container,
+  .outcomes-container .outcome3-container,
+  .outcomes-container .outcome4-container,
+  .outcomes-container .outcome5-container,
+  .outcomes-container .outcome6-container {
+    height: auto;
+  }
+
+  .assessments-container .assessments-container-title {
+    width: 100.1538461538%;
+    margin-left: -0.15385%;
+  }
+
+  .courses-container {
+    position: relative;
+    z-index: 37;
+    width: 99.8461538461%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .courses-container .courses-container-title {
+    width: 100%;
+  }
+
+  .outcome1-container .text,
+  .outcome2-container .text,
+  .outcome3-container .text,
+  .outcome4-container .text,
+  .outcome5-container .text,
+  .outcome6-container .text {
+    width: 91.1526757218%;
+    margin-left: 8.82933%;
+  }
+
+  .outcomes-container {
+    position: relative;
+    clear: both;
+    z-index: 30;
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-left: 0;
+  }
+
+  .assessment1 .text-10,
+  .assessment1 .text-9 {
+    width: 86.923076923%;
+    margin-top: 24px;
+    margin-left: 6.5354599999%;
+  }
+
+  .assessment1 .text-8 {
+    width: 86.923076923%;
+    margin-top: 15px;
+    margin-left: 6.5354599999%;
+  }
+
+  .assessment2 .text-12 {
+    margin-top: 14px;
+    margin-left: 8.4976%;
+  }
+
+  .assessment2 .text-13 {
+    margin-top: 25px;
+    margin-left: 8.4976%;
+  }
+
+  .assessment2 .text-14 {
+    margin-top: 21px;
+    margin-left: 8.4976%;
+  }
+
+  .assessment3 .text-16,
+  .assessment3 .text-17,
+  .assessment3 .text-18 {
+    width: 86.923076923%;
+    margin-left: 6.5354599999%;
+  }
+
+  ._container .abetlogo-1 {
+    width: 66.4615384615%;
+    height: auto;
+    margin-left: 16.76683%;
+  }
+}
