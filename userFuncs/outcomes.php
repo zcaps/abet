@@ -3,7 +3,7 @@ require_once(__DIR__.'/../DB/db.php');
 class Outcomes extends dbh {
     public function FindOutcomes($major, $course){
     
-        $sql = "SELECT o.outcome 
+        $sql = "SELECT o.outcomeId, o.outcome 
         FROM courseMapping cm, outcomes o, majors m
         WHERE cm.courseId='$course' AND cm.outcomeId=o.outcomeId
         AND cm.majorId=m.majorId AND m.major='$major'";

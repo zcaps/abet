@@ -125,7 +125,7 @@
       
       foreach($result as $r){
         
-        echo '<div class="outcome1-container clearfix">
+        echo '<div value="'.$r->outcomeId.'" class="outcome1-container clearfix">
         <p class="text">'.$r->outcome.'<br></p>
         </div>';
       }
