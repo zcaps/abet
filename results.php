@@ -41,6 +41,7 @@
 </script>
 </head>
 <?php
+  session_start();
   ini_set('display_errors', 1);
   error_reporting(E_ALL|E_STRICT);
   include 'userFuncs/rubrics.php';
@@ -48,7 +49,7 @@
   include 'userFuncs/results.php';
   include 'userFuncs/outcomes.php';
   include 'userFuncs/courses.php';
-  
+  echo $_SESSION['id'];
   ////
   //  Displays All Outcomes for a specific course, major combo
   //  Will be displayed every time the professor clicks on a new course

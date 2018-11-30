@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
 <?php
+session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL|E_STRICT);
 require 'userFuncs/loginFunc.php';
@@ -23,6 +24,7 @@ require 'userFuncs/loginFunc.php';
         $login = new Login();
         $result = $login->CheckInfo($_POST["username"], $_POST["password"]);
         echo $result;
+        
       }else{
         echo '<div class="login-container clearfix">
         <div class="facultylogin">Faculty Login</div>
