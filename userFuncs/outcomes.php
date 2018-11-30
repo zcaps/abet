@@ -4,9 +4,10 @@ class Outcomes extends dbh {
     public function FindOutcomes($major, $course){
     
         $sql = "SELECT o.outcome 
-        FROM courseOutcomes co, courses c, outcomes o
-        WHERE c.courseId=co.courseId AND co.outcomeId=o.outcomeId AND c.major='$major' AND c.course='$course'";
-    
+        FROM courseMapping cm, outcomes o, majors m
+        WHERE cm.courseId='$course' AND cm.outcomeId=o.outcomeId
+        AND cm.majorId=m.majorId AND m.major='$major'";
+
         $result = $this->connect()->query($sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)){

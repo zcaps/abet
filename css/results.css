@@ -30,11 +30,34 @@ body {
   overflow: hidden;
 }
 
+.addAssessment {
+  color: rgb(105, 104, 102); 
+  margin-top:0.2%;
+  margin-left:70%; 
+  font-size:2.5em; 
+  padding-left:2%; 
+  padding-right:2%; 
+  position: absolute;
+  border-radius:100%;
+}
+.addAssessment:hover {
+  color: rgb(88, 88, 88);
+}
+.addAssessment:active {
+  color: rgb(85, 85, 85);
+  font-size:2.6em;
+}
+.assessment-input {
+  width:30%;
+  display: inline-block;
+  
+  margin-right:2%;
+}
 .assessment1 {
   float: left;
   clear: both;
   width: 82.9861111111%;
-  height: 324px;
+  height: auto;
   margin-left: 8.47114%;
   border-bottom: 1px solid rgb(235, 235, 235);
 }
@@ -53,8 +76,8 @@ body {
   float: left;
   clear: both;
   width: 80%;
-  height: 1035px;
-  margin: 90px 0 0 10%;
+  height: auto;
+  margin: 90px 0 10% 10%;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
 }
@@ -68,6 +91,42 @@ body {
   font-size: 2.813em;
   text-align: center;
   color: rgb(105, 104, 102);
+}
+
+.outcome-results-container {
+  float: left;
+  clear: both;
+  width: 80%;
+  height: 150px;
+  margin: 90px 0 0 10%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.outcome-results-title {
+  float: left;
+  width: 100%;
+  min-height: 55px;
+  margin-top: 1px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 2.813em;
+  text-align: center;
+  color: rgb(105, 104, 102);
+}
+
+.outcome-result {
+  width:30%;
+  display:inline-block;
+  text-align: center;
+}
+.outcome-results-input {
+  
+  width:10%;
+}
+
+.outcome-results-label {
+  
+  width:70%;
 }
 
 .course1 {
@@ -188,6 +247,7 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
 }
 
+
 .text {
   float: left;
 }
@@ -246,7 +306,7 @@ body {
 @media(max-width: 1200px) {
   .assessments-container {
     width: 100%;
-    height: 1125px;
+    height: auto;
     margin-top: 87px;
     margin-left: 0;
   }
@@ -255,8 +315,45 @@ body {
   .assessments-container .assessment2,
   .assessments-container .assessment3 {
     width: 80%;
-    height: 354px;
+    height: auto;
     margin-left: 10%;
+  }
+
+  .addAssessment {
+    
+    margin-left:90%; 
+    
+  }
+
+  .outcome-results-container {
+    float: left;
+    clear: both;
+    width: 100%;
+    height: 150px;
+    margin: 90px 0 0 0%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+  }
+  
+  .outcome-results-title {
+    float: left;
+    width: 100%;
+    min-height: 55px;
+    margin-top: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 2.813em;
+    text-align: center;
+    color: rgb(105, 104, 102);
+  }
+  
+  .outcome-result {
+    width:32%;
+    display:inline-block;
+    text-align: center;
+  }
+  .outcome-results-input {
+    
+    width:10%;
   }
 
   .courses-container {
@@ -378,6 +475,16 @@ body {
   .outcomes-container .outcome5-container,
   .outcomes-container .outcome6-container {
     height: auto;
+  }
+
+
+  .outcome-results-container {
+    height:auto;
+  }
+  .outcome-result {
+    width:100%;
+    display:block;
+    text-align: center;
   }
 
   .assessments-container .assessments-container-title {
