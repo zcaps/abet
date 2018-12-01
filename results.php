@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://rawgit.com/MEYVN-digital/mdl-selectfield/master/mdl-selectfield.min.css">
   <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
   <script defer src="https://rawgit.com/MEYVN-digital/mdl-selectfield/master/mdl-selectfield.min.js"></script>
+  <script src='js/autosize.js'></script>
   <link type="text/css" rel="stylesheet" href="css/standardize.css">
   <link type="text/css" rel="stylesheet" href="css/results-grid.css">
   <link type="text/css" rel="stylesheet" href="css/results.css">
@@ -69,6 +70,7 @@
   $outcomeResults = json_decode($outcomeResults);
   $numberOfStudents = json_decode($outcomeResults->results);
   $assessmentPlans = json_decode($outcomeResults->assessmentPlans);
+  $narrativeSummaries = json_decode($outcomeResults->narrativeSummaries);
   print_r($outcomeResults);
   ////
   //  Returns All Assessment Plans Past, Present and (maybe)Future
@@ -161,6 +163,26 @@
         </div>
       </div>
   </div>
+  <div class="narrative-summaries-container">
+    <p class="outcome-results-title">Narrative Summaries</p>
+    <?php
+      echo '
+      <div class="narrative-summary">
+      <label>Strengths</label>
+      <textarea class="strengthsInput">'.$narrativeSummaries[0]->strengths.'</textarea>
+      </div>
+      <div class="narrative-summary">
+      <label>Weaknesses</label>
+      <textarea class="weaknessesInput">'.$narrativeSummaries[0]->weaknesses.'</textarea>
+      </div>
+      <div class="narrative-summary">
+      <label>Suggested Actions</label>
+      <textarea class="actionsInput">'.$narrativeSummaries[0]->actions.'</textarea>
+      </div>
+      ';
+    ?>
+    
+  </div>
   <div class="assessments-container clearfix">
     <button class="addAssessment">+</button>
     <p class="assessments-container-title">Assessments</p>
@@ -195,6 +217,7 @@
   </div>
   <script src='js/jquery-min.js'></script>
   <script src='js/results.js'></script>
+  <script>autosize($('.strengthsInput'));autosize($('.weaknessesInput'));autosize($('.actionsInput'));</script>
 </body>
 
 </html>

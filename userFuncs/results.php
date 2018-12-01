@@ -8,7 +8,7 @@ class Results extends dbh {
         $rows = [];
         $rows["results"] = $this->getOutcomeResults($major, $course, $outcomeId);
         $rows["assessmentPlans"] = $this->getAssessmentPlans($major, $course, $outcomeId);
-        //$rows["narrativeSummaries"] = $this->getNarrativeSummaries($major, $course, $outcomeId);
+        $rows["narrativeSummaries"] = $this->getNarrativeSummaries($major, $course, $outcomeId);
         return json_encode($rows);
         
     }
@@ -54,12 +54,12 @@ class Results extends dbh {
     //Strengths/Weaknesses, and Suggests Ways to Improve
     ////
     private function getNarrativeSummaries($major, $course, $outcomeId){
-        $sql = "SELECT sons.strengths, sons.weaknesses, sons.suggestions
-        FROM studentOutcomeNarrativeSummary sons,
-        courseOutcomes co, courses c, outcomes o
-        WHERE c.major='$major' AND c.course='$course' AND o.outcomeId=$outcomeId
-        AND c.courseId=co.courseId AND o.outcomeId=co.outcomeId
-        AND sons.courseOutcomeId=co.courseOutcomeId";
+        $sql = "SELECT n.strengths, n.weaknesses, n.actions
+        FROM narratives n, sectionsCurrent s, majors m
+        WHERE n.majorId=m.majorId AND m.major='$major'
+        AND n.sectionId=s.sectionId AND s.courseId='$course'
+        AND n.outcomeId=$outcomeId";
+        
         $result = $this->connect()->query($sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)){

@@ -93,6 +93,21 @@ body {
   color: rgb(105, 104, 102);
 }
 
+.narrative-summaries-container {
+  float: left;
+  clear: both;
+  width: 80%;
+  height: auto;
+  margin: 90px 0 10% 10%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+.narrative-summary {
+  width:30%;
+  margin-left:2%;
+  vertical-align: top;
+}
+
 .outcome-results-container {
   float: left;
   clear: both;
@@ -330,6 +345,21 @@ body {
     
   }
 
+  .narrative-summaries-container {
+    float: left;
+    clear: both;
+    width: 100%;
+    height: auto;
+    margin: 90px 0 0 0%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+  }
+
+  .narrative-summary {
+    width:80%;
+    margin-left:10%;
+  }
+
   .outcome-results-container {
     float: left;
     clear: both;
@@ -339,6 +369,7 @@ body {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
   }
+  
   
   .outcome-results-title {
     float: left;
@@ -482,6 +513,10 @@ body {
     height: auto;
   }
 
+  .narrative-summaries-container {
+    height:auto;
+  }
+  
 
   .outcome-results-container {
     height:auto;
