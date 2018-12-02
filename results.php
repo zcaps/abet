@@ -80,14 +80,8 @@
   $result = $assessmentPlan->ReturnAllPlans("CS", "COSC 465");
   echo "<p><br>Assessment Plans<p><br>";
   echo $result;
-  ////
-  //  Gets All Rubrics for a courseOutcomeId, major, and course
-  //  Past Present and (maybe)Future
-  ////
-  $rubric = new Rubric();
-  $result = $rubric->GetAllCourseRubrics("CS", "COSC 465", 1);
-  echo "<p><br>All Rubrics For This Outcome</p><br>";
-  echo $result;
+  echo $assessmentPlan->GetAllSectionsWithAssessments('CS', 'CS312', 1)
+  
 
 ?>
 
@@ -104,7 +98,7 @@
       //  Based on a Session ID or Cookie
       ////
       $courses = new Courses();
-      $results = $courses->FindCoursesByInstructorId('mgiffor2');
+      $results = $courses->FindCoursesByInstructorId($_SESSION['id']);
       $results = json_decode($results);
       
       for($i=0; $i < sizeof($results); $i++){
@@ -141,7 +135,11 @@
           <p style="float:left;padding-right:2%;">Exceeds Expectations: </p>
           <label class="outcome-results-label"></label>
           <?php
+            if(!empty($numberOfStudents)){
             echo '<input class="outcome-results-input" type="text" value='.$numberOfStudents[2]->numberOfStudents.'>';
+            }else{
+              echo '<input class="outcome-results-input" type="text">';
+            }
           ?>
           
     
@@ -150,7 +148,11 @@
         <p style="float:left;padding-right:2%;">Meets Expectations: </p>
           <label class="outcome-results-label"></label> 
           <?php
+          if(!empty($numberOfStudents)){
             echo '<input class="outcome-results-input" type="text" value='.$numberOfStudents[1]->numberOfStudents.'>';
+          }else{
+            echo '<input class="outcome-results-input" type="text">';
+          }
           ?>
 
         </div>
@@ -158,7 +160,11 @@
         <p style="float:left;padding-right:2%;">Does Not Meet Expectations: </p>
           <label class="outcome-results-label"></label>
           <?php
+          if(!empty($numberOfStudents)){
             echo '<input class="outcome-results-input" type="text" value='.$numberOfStudents[0]->numberOfStudents.'>';
+          }else{
+            echo '<input class="outcome-results-input" type="text">';
+          }
           ?>
         </div>
       </div>
@@ -166,6 +172,7 @@
   <div class="narrative-summaries-container">
     <p class="outcome-results-title">Narrative Summaries</p>
     <?php
+    if(!empty($narrativeSummaries)){
       echo '
       <div class="narrative-summary">
       <label>Strengths</label>
@@ -180,6 +187,22 @@
       <textarea class="actionsInput">'.$narrativeSummaries[0]->actions.'</textarea>
       </div>
       ';
+    }else{
+      echo '
+      <div class="narrative-summary">
+      <label>Strengths</label>
+      <textarea class="strengthsInput"></textarea>
+      </div>
+      <div class="narrative-summary">
+      <label>Weaknesses</label>
+      <textarea class="weaknessesInput"></textarea>
+      </div>
+      <div class="narrative-summary">
+      <label>Suggested Actions</label>
+      <textarea class="actionsInput"></textarea>
+      </div>
+      ';
+    }
     ?>
     
   </div>
@@ -187,11 +210,35 @@
     <button class="addAssessment">+</button>
     <p class="assessments-container-title">Assessments</p>
     <?php
+
+    ////
+    //  Gets All Rubrics for a courseOutcomeId, major, and course
+    //  Past Present and (maybe)Future
+    ////
+    $rubric = new Rubric();
+    
+    $assessmentRubrics = $rubric->GetAllCourseRubrics($results[0][0], $results[0][1], $result[0]->outcomeId);
+    $assessmentRubrics = json_decode($assessmentRubrics);
+    
+
+      $offset = 0;
       foreach($assessmentPlans as $plan){
         $plan->assessmentWeight = $plan->assessmentWeight*100;
         echo '<div class="assessment1 clearfix">
         <p class="text text-7">'.$plan->assessmentDescription.': '.$plan->assessmentWeight.'%</p>
-      </div>';
+        <span class="down-caret"></span>
+        <div class="assessmentRubric" style="display:none;">';
+
+        for($i=0;$i<3;$i++){
+          
+          if($i==0){
+            echo '<p class="text text-8">'.$assessmentRubrics[$i + $offset]->rubricName.': </p>';
+          }
+          echo '<p class="text text-8">'.$assessmentRubrics[$i + $offset]->performanceLevel.': '.$assessmentRubrics[$i + $offset]->description.'</p>';
+        }
+        $offset+=3;
+        echo '</div>
+        </div>';
       }
     ?>
     <!--
@@ -215,6 +262,15 @@
     </div>
     -->
   </div>
+  <div class="dark-bg"></div>
+  <div class="are-you-sure-popup">
+    <img class="close-popup" style="float:right;width:3%;cursor:pointer;"src='images/close.svg'>
+    <p style="margin-top:5%;text-align:center;">Are you sure that you want to replace all your assessments with the assessments from the course you chose?</p>
+    <div style="text-align:center;margin-top:5%;margin-bottom:5%;">
+    <button class="yes-replace-assessments btn-filled-grey">Yes</button>
+    <button class="dont-replace-assessments btn-filled-grey">No</button>
+    </div>
+</div>
   <script src='js/jquery-min.js'></script>
   <script src='js/results.js'></script>
   <script>autosize($('.strengthsInput'));autosize($('.weaknessesInput'));autosize($('.actionsInput'));</script>

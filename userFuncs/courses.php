@@ -12,5 +12,7 @@ class Courses extends dbh {
         $rows = mysqli_fetch_all($result);
         return json_encode($rows);
     }
+
+    
 }
 ?>

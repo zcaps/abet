@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once(__DIR__."/userFuncs/results.php");
 require_once(__DIR__."/http/jsonResponse.php");
 $results = new Results();

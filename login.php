@@ -24,6 +24,18 @@ require 'userFuncs/loginFunc.php';
         $login = new Login();
         $result = $login->CheckInfo($_POST["username"], $_POST["password"]);
         echo $result;
+        if($result == "<p style='text-align:center;'>Login Succeeded</p>"){
+          echo '<script>window.location.href="results.php"</script>';
+        }else{
+          echo '<div class="login-container clearfix">
+        <div class="facultylogin">Faculty Login</div>
+        <form action="login.php" method="POST">
+        <input name="username" class="username" placeholder="Username" type="text">
+        <input name="password" class="password" placeholder="Password" type="text">
+        <input type="submit" class="loginbtn" value="Login">
+        </form>
+      </div>';
+        }
         
       }else{
         echo '<div class="login-container clearfix">

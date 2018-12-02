@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__.'/../DB/db.php');
 class Results extends dbh {
+    
     public function outcomeResults($major, $course, $outcomeId){
         
     
@@ -16,11 +17,12 @@ class Results extends dbh {
     //  gets the number of students who exceed, meet or do not meet expectations
     ////
     private function getOutcomeResults($major, $course, $outcomeId){
+        $id = $_SESSION['id'];
         $sql = "SELECT ores.numberOfStudents FROM outcomeResults ores,
         majors m, sectionsCurrent s, outcomes o
         WHERE ores.majorId = m.majorId AND m.major='$major'
         AND s.sectionId=ores.sectionId AND s.courseId='$course' AND ores.outcomeId=o.outcomeId
-        AND ores.outcomeId=$outcomeId";
+        AND ores.outcomeId=$outcomeId AND s.instructorId='$id'";
         $result = $this->connect()->query($sql);
         $rows = [];
         while($row = mysqli_fetch_assoc($result)){
@@ -32,11 +34,12 @@ class Results extends dbh {
     //Except it only shows assessments for a Course, major, and OUTCOME
     //I think the idea is to show all Assessments at the bottom of the page
     private function getAssessmentPlans($major, $course, $outcomeId){
+        $id = $_SESSION['id'];
         $sql = "SELECT a.assessmentDescription, a.assessmentWeight
         FROM assessments a, sectionsCurrent s, majors m
         WHERE a.majorId=m.majorId AND m.major='$major'
         AND a.sectionId=s.sectionId AND s.courseId='$course'
-        AND a.outcomeId=$outcomeId";
+        AND a.outcomeId=$outcomeId AND s.instructorId='$id'";
         
 
         $result = $this->connect()->query($sql);
@@ -54,11 +57,12 @@ class Results extends dbh {
     //Strengths/Weaknesses, and Suggests Ways to Improve
     ////
     private function getNarrativeSummaries($major, $course, $outcomeId){
+        $id = $_SESSION['id'];
         $sql = "SELECT n.strengths, n.weaknesses, n.actions
         FROM narratives n, sectionsCurrent s, majors m
         WHERE n.majorId=m.majorId AND m.major='$major'
         AND n.sectionId=s.sectionId AND s.courseId='$course'
-        AND n.outcomeId=$outcomeId";
+        AND n.outcomeId=$outcomeId AND s.instructorId='$id'";
         
         $result = $this->connect()->query($sql);
         $rows = [];
