@@ -132,10 +132,15 @@ $(document).ready(function(){
                 for(var i=0;i<assessmentResults.length;i++){
                     $div = $('<div class="assessment1 clearfix">')
                     $p = $('<p class="text text-7">').html(assessmentResults[i].assessmentDescription+': '+assessmentResults[i].assessmentWeight*100+'%')
+                    $span1 = $('<span style="float:right;margin-top:-30px;cursor:pointer;">')
+                    $i = $('<i class="fa fa-trash">')
                     $span = $('<span class="down-caret">')
                     $innerdiv = $('<div class="assessmentRubric" style="display:none;">')
+                    $span1.append($i)
                     $div.append($p)
+                    
                     $div.append($span)
+                    $div.append($span1)
                     $div.append($innerdiv)
                     //display all rubrics
                     if(res.length > 0){
@@ -254,6 +259,7 @@ $(document).ready(function(){
                         $p1.click(LoadCourseWithAssessments)
                         let $span1 = $('<span class="down-caret" style="margin:1%;">')
                         let $p2 = $('<p class="text text-8">').html(res[i].assessmentDescription)
+                        $p2.click(AddAssessmentInfo)
                         $div1.append($p1)
                         $div1.append($span1)
 
@@ -329,14 +335,116 @@ $(document).ready(function(){
     }
     function AddAssessmentInfo(){
         let sectionId = $(this).parent().prev().prev().attr("value")
+        var $inputContainer = $(this).parent().parent().prev()
         let assessmentDesc = $(this).html()
         var data = {
             "pastSectionId": sectionId,
             "assessmentDescription": assessmentDesc,
             "major": substr[1],
-            "course": substr[0],
             "outcomeId": outcomeId
         }
-        alert(data)
+        $.post(
+            "update-one-assessment.php",
+            data,
+            function(res){
+                res = JSON.parse(res.message)
+                console.log(res)
+                $inputs = $inputContainer.find('.assessment-input')
+                $($inputs[0]).val(res.type)
+                $($inputs[1]).val(res.assessmentDescription)
+                $($inputs[2]).val(res.assessmentWeight)
+                $($inputs[3]).val(res.rubricName)
+            },
+            'json'
+        )
     }
+    ////
+    //  The save click has to send Narrative summaries, outcome results, and assessment data to a php page
+    //  The PHP page will check the data and respond if it's messed up
+    ////
+    $('.save').click(function(){
+        $outcomeResults = $('.outcome-results-input')
+        let exceeds = $($outcomeResults[0]).val()
+        let meets = $($outcomeResults[1]).val()
+        let notMeets = $($outcomeResults[2]).val()
+
+        let strengths = $('.strengthsInput').val()
+        let weaknesses = $('.weaknessesInput').val()
+        let actions = $('.actionsInput').val()
+
+        var assessment = {}
+        $assessmentsContainer = $(this).parent().prev().find('input, textarea')
+        if($assessmentsContainer.length == 4){
+            //if we have 4 results, then we are inserting an assessment
+            
+            assessment = {
+                "type": null,
+                "description": null,
+                "weight": null,
+                "rubric": null
+            }
+            let j = 0
+            for(i in assessment){
+                //console.log(assessment[i])
+                assessment[i] = $($assessmentsContainer[j]).val()
+                j++
+            }
+            
+
+        }else if($assessmentsContainer.length == 7){
+            //if we have 7 results, then we're inserting an assessment and a rubric
+            assessment = {
+                "type": null,
+                "description": null,
+                "weight": null,
+                "rubricName": null,
+                "exceeds": null,
+                "meets": null,
+                "notMeets": null
+            }
+            let j = 0
+            for(i in assessment){
+                assessment[i] = $($assessmentsContainer[j]).val()
+                j++
+            }
+        }else if($assessmentsContainer.length == 0){
+            //we haven't even clicked the plus button yet
+        }else{
+            console.log("I know what you're trying to do...")
+        }
+        console.log($assessmentsContainer)
+        var data = {
+            "identification": {
+                "major": substr[1],
+                "course": substr[0],
+                "outcomeId": outcomeId
+            },
+            "outcomeResults": {
+                "exceeds": exceeds,
+                "meets": meets,
+                "notMeets": notMeets
+            },
+            "narrativeSummaries": {
+                "strengths": strengths,
+                "weaknesses": weaknesses,
+                "actions": actions
+            },
+            "assessmentPlans": assessment
+        }
+
+        $.post(
+            "insert-data.php",
+            data,
+            function(res){
+                
+                console.log(res.message)
+            },
+            "json"
+        )
+        //console.log(data)
+        
+    })
+    $('.cancel').click(function(){
+        window.location.reload()
+    })
 });

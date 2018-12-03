@@ -13,6 +13,8 @@
   <link type="text/css" rel="stylesheet" href="css/standardize.css">
   <link type="text/css" rel="stylesheet" href="css/results-grid.css">
   <link type="text/css" rel="stylesheet" href="css/results.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script type="application/javascript">
     window.onload = function() {
         materializeControls();
@@ -50,15 +52,16 @@
   include 'userFuncs/results.php';
   include 'userFuncs/outcomes.php';
   include 'userFuncs/courses.php';
-  echo $_SESSION['id'];
+  if(!isset($_SESSION['id'])){
+    echo '<script>window.location.href = "login.php"</script>';
+  }
   ////
   //  Displays All Outcomes for a specific course, major combo
   //  Will be displayed every time the professor clicks on a new course
   ////
   $outcomes= new Outcomes();
   $result = $outcomes->FindOutcomes("CS", "COSC 465");
-  echo "<p><br>All Outcomes For This Course<p><br>";
-  echo $result;
+  
   ////
   //  Gets all plans,
   //  All Results and All Narrative Summaries
@@ -66,21 +69,19 @@
   ////
   $result = new Results();
   $outcomeResults = $result->outComeResults("CS", "CS312", 1);
-  echo "<p><br>Course Outcome Results<p><br>";
+  
   $outcomeResults = json_decode($outcomeResults);
   $numberOfStudents = json_decode($outcomeResults->results);
   $assessmentPlans = json_decode($outcomeResults->assessmentPlans);
   $narrativeSummaries = json_decode($outcomeResults->narrativeSummaries);
-  print_r($outcomeResults);
+  
   ////
   //  Returns All Assessment Plans Past, Present and (maybe)Future
   //  Of all Courses with Major and Course ID
   ////
   $assessmentPlan = new AssessmentPlans();
-  $result = $assessmentPlan->ReturnAllPlans("CS", "COSC 465");
-  echo "<p><br>Assessment Plans<p><br>";
-  echo $result;
-  echo $assessmentPlan->GetAllSectionsWithAssessments('CS', 'CS312', 1)
+
+  
   
 
 ?>
@@ -227,6 +228,7 @@
         echo '<div class="assessment1 clearfix">
         <p class="text text-7">'.$plan->assessmentDescription.': '.$plan->assessmentWeight.'%</p>
         <span class="down-caret"></span>
+        <span style="float:right;margin-top:-30px;cursor:pointer;"><i class="fa fa-trash"></i></span>
         <div class="assessmentRubric" style="display:none;">';
 
         for($i=0;$i<3;$i++){
@@ -262,6 +264,10 @@
     </div>
     -->
   </div>
+  <div class="clearfix" style="text-align:center;width:100%;position:relative;clear:both; margin-bottom:10%;">
+    <button class="cancel btn-filled-grey">Cancel</button>
+    <button class="save btn-filled-grey">Save</button>
+  </div>
   <div class="dark-bg"></div>
   <div class="are-you-sure-popup">
     <img class="close-popup" style="float:right;width:3%;cursor:pointer;"src='images/close.svg'>
@@ -270,7 +276,7 @@
     <button class="yes-replace-assessments btn-filled-grey">Yes</button>
     <button class="dont-replace-assessments btn-filled-grey">No</button>
     </div>
-</div>
+  </div>
   <script src='js/jquery-min.js'></script>
   <script src='js/results.js'></script>
   <script>autosize($('.strengthsInput'));autosize($('.weaknessesInput'));autosize($('.actionsInput'));</script>
